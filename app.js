@@ -4,7 +4,7 @@ function getPrice(productName, price) {
     const product = document.getElementById(productName + '-price');
     product.innerText = parseFloat(price);
     // const product = document.getElementById
-    setTotalPrice();
+    updateTotalPrice ();
     getPomoCode();
 }
 // total price
@@ -13,7 +13,7 @@ function getPriceText(cost) {
     const productPriceText = parseFloat(productPrice.innerText);
     return productPriceText;
 }
-function setTotalPrice() {
+function updateTotalPrice () {
     const bestPrice = getPriceText('best');
     const memoryPrice = getPriceText('memory');
     const storagePrice = getPriceText('storage');
@@ -25,16 +25,16 @@ function setTotalPrice() {
 //pomo code
 function getPomoCode() {
     var fullTotal = document.getElementById('full-total-extra-part');
-    fullTotal.innerText = setTotalPrice();
+    fullTotal.innerText = updateTotalPrice ();
     var pomoInput = document.getElementById('pomo-input');
     if (pomoInput.value == 'stevekaku') {
-        fullTotal.innerText = (parseFloat(setTotalPrice()) / 100) * 80;
+        fullTotal.innerText = (parseFloat(updateTotalPrice ()) / 100) * 80;
         pomoInput.value = '';
     }
 }
 // memory cost
 //without memory cost
-document.getElementById('memory-cost').addEventListener('click', function () {
+document.getElementById('memory-cost-1').addEventListener('click', function () {
     getPrice('memory', 0);
 })
 //with memory cost
